@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="shortcut icon" href="URL" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <title>Climatic</title>
+  </head>
+  <body>
+    <main id="app">
+      <!-- Search Bar -->
+      <nav id="searchBar">
+        <input type="text" id="searchBarInput" placeholder="Search by city" />
+        <button id="searchIcon">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </nav>
+
+      <!-- Date & City -->
+      <section id="info">
+        <p id="date"></p>
+        <h3 id="city"></h3>
+      </section>
+
+      <!-- Description -->
+      <section id="description"></section>
+
+      <!-- Temp -->
+      <section id="temp"></section>
+
+      <!-- Extra Info -->
+      <section id="extraInfo">
+        <div class="col">
+          <div class="info">
+            <h5>Highs</h5>
+            <p id="tempMax"></p>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="info">
+            <h5>Lows</h5>
+            <p id="tempMin"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

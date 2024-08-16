@@ -52,11 +52,21 @@ const img = document.createElement("img");
 function loading() {
   document.getElementById("info").hidden = true;
   document.getElementById("loader").hidden = false;
+  tempImg.hidden = true;
+  description.hidden = true;
+  temp.hidden = true;
+  tempMax.hidden = true;
+  tempMin.hidden = true;
 }
 
 function completeLoading() {
   document.getElementById("info").hidden = false;
   document.getElementById("loader").hidden = true;
+  tempImg.hidden = false;
+  description.hidden = false;
+  temp.hidden = false;
+  tempMax.hidden = false;
+  tempMin.hidden = false;
 }
 
 async function getWeather() {
@@ -106,4 +116,7 @@ async function getWeather() {
   }
 }
 
-document.getElementById("searchIcon").addEventListener("click", getWeather);
+document.getElementById("searchIcon").addEventListener("click", (e) => {
+  e.preventDefault();
+  getWeather();
+});

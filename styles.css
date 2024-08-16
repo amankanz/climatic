@@ -6,14 +6,15 @@
   padding: 0;
   margin: 0;
   font-family: "Roboto", sans-serif;
+  color: #fff;
 }
 
 #app {
   position: relative;
   width: 25rem;
-  height: 30rem;
+  height: 33rem;
   display: block;
-  margin: 2.5rem auto;
+  margin: 2rem auto;
   text-align: center;
   padding: 4rem 0;
   overflow: hidden;
@@ -65,13 +66,34 @@ input::placeholder {
   font-size: 1.5rem;
 }
 
+#info {
+  line-height: 0.5rem;
+  color: #fff;
+  /* display: none; */
+}
+#info h3 {
+  font-size: 3rem;
+  font-weight: 300;
+  text-transform: capitalize;
+  margin: 0.6em;
+}
+
+#description {
+  text-transform: capitalize;
+}
+
+#temp {
+  font-weight: 300;
+  font-size: 3rem;
+  margin-top: 1rem;
+}
+
 #extraInfo {
   position: absolute;
   bottom: 5px;
   width: 100%;
   display: flex;
   justify-content: space-around;
-  color: #fff;
   padding-bottom: 3rem;
 }
 
@@ -79,4 +101,38 @@ input::placeholder {
   font-size: 1.5rem;
   font-weight: 300;
   text-transform: capitalize;
+}
+
+/* Loader */
+/* HTML: */
+.loader {
+  height: 30px;
+  width: 50%;
+  left: 90px;
+  position: absolute;
+  padding: 0 1rem;
+  aspect-ratio: 6;
+  --c: #0000 64%, #fff 66% 98%, #0000 101%;
+  background: radial-gradient(35% 146% at 50% 159%, var(--c)) 0 0,
+    radial-gradient(35% 146% at 50% -59%, var(--c)) 25% 100%;
+  background-size: calc(100% / 3) 50%;
+  background-repeat: repeat-x;
+  clip-path: inset(0 50%);
+  animation: l3 1s infinite linear;
+}
+@keyframes l3 {
+  90%,
+  to {
+    clip-path: inset(0);
+  }
+}
+
+/* Mobile view */
+@media only screen and (max-width: 900px) {
+  #app {
+    width: 20rem;
+    height: 37rem;
+    margin: 2rem auto;
+    padding: 2rem 0;
+  }
 }

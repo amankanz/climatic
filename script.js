@@ -41,13 +41,13 @@ let dayDate = dateObj.getUTCDate();
 let day = daysOfWeek.at(dateObj.getUTCDay());
 let year = dateObj.getUTCFullYear();
 console.log(dateObj);
-console.log(month, day, dayDate, year);
 
 date.textContent = `${day}, ${dayDate} ${month} ${year}`;
 
 const app = document.getElementById("app");
 
 const img = document.createElement("img");
+const span = document.createElement("span");
 
 function loading() {
   document.getElementById("info").hidden = true;
@@ -69,10 +69,20 @@ function completeLoading() {
   tempMin.hidden = false;
 }
 
+// function reset() {
+//   document.getElementById("info").hidden = false;
+//   document.getElementById("loader").hidden = true;
+//   tempImg.hidden = false;
+//   description.hidden = false;
+//   temp.hidden = false;
+//   tempMax.hidden = false;
+//   tempMin.hidden = false;
+// }
+
 async function getWeather() {
   const apiKey = "54730632bf3873e3879ae4a3a5351e06";
 
-  const cityName = document.getElementById("searchBarInput").value;
+  const cityName = document.getElementById("searchBarInput").value.trim();
 
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
 
@@ -95,14 +105,21 @@ async function getWeather() {
     const weatherData = await weatherDataFetched.json();
     console.log(weatherData);
 
-    city.textContent = `${weatherData.name}`;
+    city.textContent = `${
+      !weatherData.name ? weatherData.message : weatherData.name
+    }`;
 
     img.src = `https://openweathermap.org/img/wn/${
-      weatherData.weather.at(0).icon
+      weatherData.weather?.at(0).icon
     }@2x.png`;
     img.alt = "Weather Icon";
 
-    tempImg.appendChild(img);
+    if (weatherData.cod === "404") {
+      span.textContent = "🔍";
+      tempImg.appendChild(span);
+    } else {
+      tempImg.appendChild(img);
+    }
 
     description.textContent = `${weatherData.weather.at(0).main}`;
 
@@ -112,11 +129,17 @@ async function getWeather() {
 
     completeLoading();
   } catch (error) {
-    "Error: ", error;
+    console.log("Error: ", error);
   }
+  completeLoading();
 }
 
 document.getElementById("searchIcon").addEventListener("click", (e) => {
   e.preventDefault();
   getWeather();
 });
+
+// document.getElementById("clearIcon").addEventListener("click", (e) => {
+//   e.preventDefault();
+//   reset();
+// });

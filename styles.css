@@ -9,33 +9,58 @@
   color: #fff;
 }
 
+body {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem 0;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(./asset/travel-image.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  filter: blur(7px);
+  z-index: -1; /* Places the background behind the content */
+}
+
 #app {
   position: relative;
   width: 25rem;
   height: 33rem;
   display: block;
-  margin: 2rem auto;
+  margin: 0 auto;
   text-align: center;
   padding: 4rem 0;
   overflow: hidden;
   border-radius: 3rem;
-  background: rgb(238, 174, 202);
+  background: rgb(159, 125, 86);
   background: -moz-radial-gradient(
     circle,
-    rgba(238, 174, 202, 1) 0%,
-    rgba(148, 187, 233, 1) 100%
+    rgba(159, 125, 86, 1) 0%,
+    rgba(253, 209, 122, 1) 100%
   );
+
+  /* rgb(253, 209, 122)*/
   background: -webkit-radial-gradient(
     circle,
-    rgba(238, 174, 202, 1) 0%,
-    rgba(148, 187, 233, 1) 100%
+    rgba(159, 125, 86, 1) 0%,
+    rgba(253, 209, 122, 1) 100%
   );
   background: radial-gradient(
     circle,
-    rgba(238, 174, 202, 1) 0%,
-    rgba(148, 187, 233, 1) 100%
+    rgba(159, 125, 86, 1) 0%,
+    rgba(253, 209, 122, 1) 100%
   );
-  /* filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eeaeca",endColorstr="#94bbe9",GradientType=1); */
 }
 
 #searchBar {
@@ -59,11 +84,17 @@ input::placeholder {
   opacity: 0.6;
 }
 
-#searchIcon {
+input:focus {
+  background-color: transparent; /* Background becomes transparent on focus */
+}
+
+#searchIcon,
+#clearIcon {
   border: none;
   background: transparent;
   color: #fff;
   font-size: 1.5rem;
+  margin: 0 1rem;
 }
 
 #info {
@@ -104,7 +135,6 @@ input::placeholder {
 }
 
 /* Loader */
-/* HTML: */
 .loader {
   height: 30px;
   width: 50%;
@@ -134,5 +164,10 @@ input::placeholder {
     height: 37rem;
     margin: 2rem auto;
     padding: 2rem 0;
+  }
+
+  #searchIcon,
+  #clearIcon {
+    font-size: 1rem;
   }
 }
